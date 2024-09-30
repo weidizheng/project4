@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/welcome">
+
+    <!-- Welcome Fragment: Start destination of the app -->
+    <fragment
+        android:id="@+id/welcome"
+        android:name="com.example.project4.welcome"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome">
+
+        <!-- Navigate to Questions Fragment -->
+        <action
+            android:id="@+id/action_welcome_to_questions"
+            app:destination="@id/questions" />
+
+        <!-- Arguments passed from Welcome to Questions -->
+        <argument
+            android:name="difficulty"
+            app:argType="string"
+            android:defaultValue="easy" />
+        <argument
+            android:name="questionAmount"
+            app:argType="integer"
+            android:defaultValue="10" />
+        <argument
+            android:name="operation"
+            app:argType="string"
+            android:defaultValue="addition" />
+    </fragment>
+
+    <!-- Questions Fragment: Displays questions to the user -->
+    <fragment
+        android:id="@+id/questions"
+        android:name="com.example.project4.questions"
+        android:label="fragment_questions"
+        tools:layout="@layout/fragment_questions">
+
+        <!-- Navigate to Results Fragment -->
+        <action
+            android:id="@+id/action_questions_to_results"
+            app:destination="@id/results" />
+
+        <!-- Arguments passed to Questions Fragment -->
+        <argument
+            android:name="questionAmount"
+            app:argType="integer"
+            android:defaultValue="10" />
+        <argument
+            android:name="correctAnswers"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="incorrectAnswers"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="operation"
+            app:argType="string"
+            android:defaultValue="addition" />
+        <argument
+            android:name="difficulty"
+            app:argType="string"
+            android:defaultValue="easy" />
+    </fragment>
+
+    <!-- Results Fragment: Shows the user's performance -->
+    <fragment
+        android:id="@+id/results"
+        android:name="com.example.project4.results"
+        android:label="fragment_results"
+        tools:layout="@layout/fragment_results">
+
+        <!-- Navigate back to Welcome Fragment -->
+        <action
+            android:id="@+id/action_results_to_welcome"
+            app:destination="@id/welcome" />
+
+        <!-- Arguments passed to Results Fragment -->
+        <argument
+            android:name="correctAnswers"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="incorrectAnswers"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="questionAmount"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+</navigation>

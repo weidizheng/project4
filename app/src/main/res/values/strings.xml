@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Project4</string>
+
+    <string name="text_hint">0</string>
+
+    <string name="btn_start">Start</string>
+
+    <string name="btn_plus">+</string>
+    <string name="btn_minus">-</string>
+
+    //+ - * /
+    <string name="rad_add">Addition</string>
+    <string name="rad_sub">Subtraction</string>
+    <string name="rad_div">Division</string>
+    <string name="rad_mul">Multiplication</string>
+    //difficult mode
+    <string name="rad_easy">Easy</string>
+    <string name="rad_hard">Hard</string>
+    <string name="rad_medium">Medium</string>
+
+    <string name="text_whatis">What is...</string>
+    <string name="btn_done">Done</string>
+    <string name="btn_redo">Try again</string>
+
+    <string name="text_numquest">Number Of Questions</string>
+    <string name="hello_blank_fragment">fragment</string>
+
+
+</resources>
