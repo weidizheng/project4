@@ -1,5 +1,6 @@
 package com.example.project4
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,8 +17,6 @@ class results : Fragment() {
     private lateinit var resultText: TextView
 
     // State variables for tracking quiz progress
-    private var difficultyLevel: String = "easy"
-    private var mathOperation: String = "addition"
     private var totalQuestions: Int = 10
     private var correctAnswers: Int = 0
     private var wrongAnswers: Int = 0
@@ -50,7 +49,7 @@ class results : Fragment() {
             view.findNavController().navigate(navigationAction)
         }
 
-        // Display the quiz results
+        // Display results
         displayResults()
     }
 
@@ -59,12 +58,26 @@ class results : Fragment() {
         // Calculate total answered questions
         totalQuestions = correctAnswers + wrongAnswers
 
-        // Prepare result strings
-        val correctText = "Correct: $correctAnswers"
-        val incorrectText = "Incorrect: $wrongAnswers"
-        val scoreText = "Score: $correctAnswers/$totalQuestions"
+        if (totalQuestions != 0) {
+            // Calculate correct percentage
+            val correctPercentage = (correctAnswers * 100) / totalQuestions
 
-        // Display results as formatted text
-        resultText.text = "$correctText\n$incorrectText\n$scoreText"
+            // Prepare result strings based on score
+            val resultMessage = if (correctPercentage >= 80) {
+                // display congrats message in green
+                resultText.setTextColor(Color.GREEN)
+                "Congratulations! You got $correctPercentage% correct.\n" +
+                        "Score: $correctAnswers/$totalQuestions"
+            } else {
+                //  display fail message in red
+                resultText.setTextColor(Color.RED)
+                "You got only $correctPercentage% correct. Try Again!\n" +
+                        "Score: $correctAnswers/$totalQuestions"
+            }
+
+            resultText.text = resultMessage
+        } else {
+            resultText.text = "No questions answered."
+        }
     }
 }

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".welcome"
     android:padding="16dp">
 
+    <!-- ImageView at the top to display a header image -->
+    <ImageView
+        android:id="@+id/headerImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/hated_math"
+        android:scaleType="centerCrop"
+        android:contentDescription="Header Image"
+        android:layout_gravity="top" />
+
+    <!-- Main container for the content below the image -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:layout_marginTop="220dp"> <!-- Margin to prevent overlapping with the ImageView -->
 
-        <!-- Top Image -->
-        <ImageView
-            android:id="@+id/myImageView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/hated_math"
-            android:scaleType="fitCenter"
-            android:adjustViewBounds="true"
-            android:contentDescription="Image" />
-
-        <!-- Difficulty & Operation Selection -->
+        <!-- Horizontal container for Difficulty and Operation choices -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,13 +30,14 @@
             android:padding="16dp"
             android:gravity="center">
 
-            <!-- Difficulty Selection -->
+            <!-- Difficulty RadioGroup -->
             <RadioGroup
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <!-- Difficulty TextView -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -45,6 +46,7 @@
                     android:textStyle="bold"
                     android:paddingBottom="8dp" />
 
+                <!-- RadioButtons for selecting difficulty -->
                 <RadioButton
                     android:id="@+id/radio_easy"
                     android:layout_width="wrap_content"
@@ -66,10 +68,9 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:text="Hard" />
-
             </RadioGroup>
 
-            <!-- Operation Selection -->
+            <!-- Operation RadioGroup -->
             <RadioGroup
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -77,6 +78,7 @@
                 android:orientation="vertical"
                 android:paddingLeft="16dp">
 
+                <!-- Operation TextView -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -85,6 +87,7 @@
                     android:textStyle="bold"
                     android:paddingBottom="8dp" />
 
+                <!-- RadioButtons for selecting operation -->
                 <RadioButton
                     android:id="@+id/radio_addition"
                     android:checked="true"
@@ -113,11 +116,10 @@
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:text="Division" />
-
             </RadioGroup>
         </LinearLayout>
 
-        <!-- Number of Questions -->
+        <!-- TextView for Number of Questions label -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -127,7 +129,7 @@
             android:gravity="center"
             android:paddingTop="16dp" />
 
-        <!-- Number of Questions Selection -->
+        <!-- Controls for adjusting the number of questions -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -135,6 +137,7 @@
             android:gravity="center"
             android:paddingTop="8dp">
 
+            <!-- Minus button to decrease number of questions -->
             <Button
                 android:id="@+id/button_minus"
                 android:layout_width="wrap_content"
@@ -142,6 +145,7 @@
                 android:text="-"
                 android:padding="8dp" />
 
+            <!-- EditText to display and modify the number of questions -->
             <EditText
                 android:id="@+id/edittext_number_of_questions"
                 android:layout_width="50dp"
@@ -153,16 +157,16 @@
                 android:ems="3"
                 android:backgroundTint="#ECEFF1" />
 
+            <!-- Plus button to increase number of questions -->
             <Button
                 android:id="@+id/button_plus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+"
                 android:padding="8dp" />
-
         </LinearLayout>
 
-        <!-- Start Button -->
+        <!-- Start button to begin the quiz -->
         <Button
             android:id="@+id/btn_start"
             android:layout_width="match_parent"
@@ -174,7 +178,6 @@
             android:textColor="#FFFFFF"
             android:padding="16dp"
             android:textStyle="bold" />
-
     </LinearLayout>
 
 </FrameLayout>

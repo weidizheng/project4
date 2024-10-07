@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".questions">
 
+    <!-- Bottom ImageView -->
     <ImageView
         android:id="@+id/myImageView"
         android:layout_width="match_parent"
@@ -14,12 +15,14 @@
         android:adjustViewBounds="true"
         android:scaleType="fitXY" />
 
+    <!-- Main container for question and answer area -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/myImageView"
         android:orientation="vertical">
 
+        <!-- display and answer input -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -28,12 +31,13 @@
             android:gravity="center_horizontal"
             android:padding="16dp">
 
+            <!-- top padding -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
-            </View>
+                android:layout_weight="1" />
 
+            <!-- display the question prompt -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,6 +46,7 @@
                 android:layout_gravity="center_horizontal"
                 android:paddingBottom="16dp"/>
 
+            <!--  display the actual math question -->
             <TextView
                 android:id="@+id/math_question"
                 android:layout_width="wrap_content"
@@ -51,12 +56,13 @@
                 android:layout_gravity="center_horizontal"
                 android:paddingBottom="24dp"/>
 
+            <!--  bottom padding -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1">
-            </View>
+                android:layout_weight="1" />
 
+            <!--  input answer -->
             <EditText
                 android:id="@+id/et_user_answer"
                 android:layout_width="match_parent"
@@ -68,6 +74,7 @@
                 android:textSize="48sp"
                 android:paddingBottom="36dp"/>
 
+            <!-- Button submit their answer -->
             <Button
                 android:id="@+id/btn_done"
                 android:layout_width="match_parent"

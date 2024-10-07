@@ -1,5 +1,8 @@
 package com.example.project4
 
+import android.content.Context
+import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +10,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import kotlin.random.Random
+import androidx.appcompat.app.AppCompatActivity
 
 class questions : Fragment() {
 
@@ -33,6 +38,11 @@ class questions : Fragment() {
     var totalCorrectAnswers: Int = 0
     var totalWrongAnswers: Int = 0
 
+    // Track remaining questions
+    var remainingQuestions: Int = numberOfQuestions
+
+    private lateinit var context: Context
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,10 +52,13 @@ class questions : Fragment() {
         difficulty = welcomeArgs.fromBundle(requireArguments()).difficulty
         operation = welcomeArgs.fromBundle(requireArguments()).operation
         numberOfQuestions = welcomeArgs.fromBundle(requireArguments()).questionAmount
+        remainingQuestions = numberOfQuestions // Initialize remaining questions
 
         // Set up the UI
         mathQuestionTextView = view.findViewById(R.id.math_question)
         etUserAnswer = view.findViewById(R.id.et_user_answer)
+
+        context = requireContext()
 
         return view
     }
@@ -131,22 +144,48 @@ class questions : Fragment() {
 
         // Compare user input to the correct answer.
         if (userInput != null) {
+            // Play sound
             if (userInput == currentAnswer) {
                 totalCorrectAnswers++
+                showToastAndPlaySound(true)
             } else {
                 totalWrongAnswers++
+                showToastAndPlaySound(false)
             }
 
             // Prepare for next question.
             etUserAnswer.text.clear()
-            numberOfQuestions--
+            remainingQuestions--
 
-            // If all questions answered, navigate to results; otherwise, set new problem.
-            if (numberOfQuestions <= 0) {
+            // If all questions answered, navigate to results
+            if (remainingQuestions <= 0) {
                 navigateToResults()
             } else {
                 setRandomMathProblem()
             }
+        }
+    }
+
+    private fun showToastAndPlaySound(isCorrect: Boolean) {
+        val toastMessage: String
+        val sound: Int
+
+        if (isCorrect) {
+            toastMessage = "Correct. Good work!"
+            sound = R.raw.correct_sound
+        } else {
+            toastMessage = "Wrong"
+            sound = R.raw.wrong_sound
+        }
+
+        // Show toast message
+        Toast.makeText(context, toastMessage, Toast.LENGTH_SHORT).show()
+
+        // Play sound
+        val mediaPlayer = MediaPlayer.create(context, sound)
+        mediaPlayer.start()
+        mediaPlayer.setOnCompletionListener {
+            it.release()
         }
     }
 }

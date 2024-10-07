@@ -55,8 +55,9 @@ class welcome : Fragment() {
 
         // Start quiz button click listener
         btnStart.setOnClickListener {
-            // Navigate to questions fragment with user's selections
             navigateToQuestionsFragment()
+
+            // Navigate to questions fragment with user's selections
             val action = welcomeDirections.actionWelcomeToQuestions(
                 numberOfQuestions, 0, 0, operation, difficulty
             )

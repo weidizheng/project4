@@ -12,26 +12,26 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Result TextView -->
+        <!-- TextView -->
         <TextView
             android:id="@+id/result"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="You missed 5 questions."
             android:textSize="24sp"
+            android:textStyle="bold"
             android:gravity="center"
             android:layout_gravity="center"
             android:paddingBottom="24dp"/>
 
-        <!-- Try Again Button -->
+        <!-- Try again@ -->
         <Button
             android:id="@+id/btn_try_again"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_redo"
+            android:text="Try Again"
             android:textSize="24sp"
             android:padding="12dp"/>
-
     </LinearLayout>
 
 </FrameLayout>
